@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<!--Файл квитанції-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:simpleType name="DGLong">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="10"/>
+			<xs:pattern value="([0-9]{5,10}|[АБВГДЕЄЖЗИ_КЛМНОПРСТУФХЦЧШЩЮЯ]{2}[0-9]{6})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--Загальний тип "назва помилкового реквізиту"-->
+	<xs:complexType name="SNamRekvColumn">
+		<xs:simpleContent>
+			<xs:extension base="DGSNamRekv"/>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="DGSNamRekv">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="20"/>
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--Загальний тип код помилки-->
+	<xs:complexType name="SErrKodColumn">
+		<xs:simpleContent>
+			<xs:extension base="DGSErrKod"/>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="DGSErrKod">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="4"/>
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--Загальний тип атрибуту ROWNUM для вказання номеру строки в табличних даних-->
+	<xs:simpleType name="rowInt">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="999999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="DECLARATION">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="KVIHEAD">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="FNAME" minOccurs="1" maxOccurs="1">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="31"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="DOCFNAME" minOccurs="1" maxOccurs="1">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="31"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="RESULT">
+								<xs:simpleType>
+									<xs:restriction base="xs:integer">
+										<xs:enumeration value="1"/>
+										<xs:enumeration value="2"/>
+										<xs:enumeration value="3"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="KVTDATE">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:length value="10"/>
+										<xs:pattern value="((((0[1-9]|[1-2][0-9])\.(0(1|[3-9])|1[0-2]))|(30\.(0(1|[3-9])|1[0-2]))|(31\.(01|03|05|07|08|10|12)))\.(19|20)\d{2})|((0[1-9]|[1-2][0-9])\.02\.(19|20)(([0|2|4|6|8][0|4|8])|([1|3|5|7|9][2|6]))|(0[1-9]|[1-2][0-8]|19)\.02\.(19|20)(([0|2|4|6|8][1-3|5-7|9])|([1|3|5|7|9][0-1|3-5|7-9])))"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="KVTTIME">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:length value="4"/>
+										<xs:pattern value="((([0-1][0-9])|(2[0-3]))[0-5][0-9])"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="KVTNUM">
+								<xs:simpleType>
+									<xs:restriction base="xs:integer">
+										<xs:enumeration value="1"/>
+										<xs:enumeration value="2"/>
+										<xs:enumeration value="3"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="DOCHEAD">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="FNAME" minOccurs="1" maxOccurs="1">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="31"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="EDRPOU" type="DGLong" minOccurs="1" maxOccurs="1"/>
+										<xs:element name="IDBANK" nillable="true" minOccurs="1" maxOccurs="1">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:length value="3"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="MFO" type="xs:integer" nillable="true" minOccurs="1" maxOccurs="1"/>
+										<!--Код задачі-->
+										<xs:element name="CDTASK" minOccurs="1" maxOccurs="1">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:length value="3"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<!--Код підзадачі-->
+										<xs:element name="CDSUB" nillable="true" minOccurs="1" maxOccurs="1">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="5"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<!--Код шаблону документа-->
+										<xs:element name="CDFORM" minOccurs="1" maxOccurs="1">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:length value="8"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="FILL_DATE" minOccurs="1" maxOccurs="1">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:length value="10"/>
+													<xs:pattern value="((((0[1-9]|[1-2][0-9])\.(0(1|[3-9])|1[0-2]))|(30\.(0(1|[3-9])|1[0-2]))|(31\.(01|03|05|07|08|10|12)))\.(19|20)\d{2})|((0[1-9]|[1-2][0-9])\.02\.(19|20)(([0|2|4|6|8][0|4|8])|([1|3|5|7|9][2|6]))|(0[1-9]|[1-2][0-8]|19)\.02\.(19|20)(([0|2|4|6|8][1-3|5-7|9])|([1|3|5|7|9][0-1|3-5|7-9])))"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="FILL_TIME" minOccurs="1" maxOccurs="1">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:length value="4"/>
+													<xs:pattern value="((([0-1][0-9])|(2[0-3]))[0-5][0-9])"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="EI" nillable="true">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="2"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="KU" nillable="true">
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:maxInclusive value="99"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="TEXT" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="DECLARBODY">
+					<xs:complexType>
+						<xs:sequence>
+							<!-- INF_KVI -->
+							<xs:element name="KVI_ERROR" minOccurs="1" maxOccurs="1">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="4"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="REESTR_ID" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:unsignedLong">
+										<xs:maxInclusive value="999999999"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="KVI_COMMENT" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1000"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="RESERVE" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="300"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<!-- INF_ERR -->
+							<xs:element name="INF_ERR" type="TROWS" minOccurs="0" maxOccurs="999999"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="TROWS">
+		<xs:sequence>
+			<xs:element name="ERR_REK" type="SNamRekvColumn"/>
+			<xs:element name="ERR_KOD" type="SErrKodColumn"/>
+		</xs:sequence>
+		<xs:attribute name="ROWNUM" type="rowInt" use="required"/>
+	</xs:complexType>
+</xs:schema>

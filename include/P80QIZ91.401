@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<DECLARATION xsi:noNamespaceSchemaLocation="NBU00201.XSD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <KVIHEAD>
+    <FNAME>P80QIZ91.401</FNAME>
+    <DOCFNAME>P70QIZ91.401</DOCFNAME>
+    <RESULT>2</RESULT>
+    <KVTDATE>09.01.2014</KVTDATE>
+    <KVTTIME>1303</KVTTIME>
+    <KVTNUM>2</KVTNUM>
+    <DOCHEAD />
+    <TEXT>Помилка при обробці файлу.</TEXT>
+  </KVIHEAD>
+  <DECLARBODY>
+    <KVI_ERROR>9999</KVI_ERROR>
+    <REESTR_ID>0</REESTR_ID>
+    <KVI_COMMENT>Файл не відповідає XSD-схемі</KVI_COMMENT>
+    <INF_ERR ROWNUM="1">
+      <ERR_REK>SUM_BANK</ERR_REK>
+      <ERR_KOD>8001</ERR_KOD>
+    </INF_ERR>
+  </DECLARBODY>
+</DECLARATION>

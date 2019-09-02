@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<DECLARATION xsi:noNamespaceSchemaLocation="NBU00801.XSD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <KVIHEAD>
+    <FNAME>P80RXX12.301</FNAME>
+    <DOCFNAME>P70RXX12.301</DOCFNAME>
+    <RESULT>1</RESULT>
+    <KVTDATE>19.02.2013</KVTDATE>
+    <KVTTIME>1205</KVTTIME>
+    <KVTNUM>2</KVTNUM>
+    <DOCHEAD>
+      <FNAME>P70RXX12.301</FNAME>
+		<EDRPOU>12345678</EDRPOU>
+		<IDBANK>RXX</IDBANK>
+		<MFO>123456</MFO>
+		<CDTASK>002</CDTASK>
+		<CDSUB>00001</CDSUB>
+		<CDFORM>NBU_01SV</CDFORM>
+		<FILL_DATE>09.12.2013</FILL_DATE>
+		<FILL_TIME>0900</FILL_TIME>
+		<EI></EI>
+		<KU>99</KU>
+    </DOCHEAD>
+    <TEXT>Квитанція створена за результатами обробки файла - структура власності</TEXT>
+  </KVIHEAD>
+  <DECLARBODY>
+    <KVI_ERROR>0000</KVI_ERROR>
+    <REESTR_ID>1</REESTR_ID>
+    <KVI_COMMENT>Файл успішно оброблено.</KVI_COMMENT>
+  </DECLARBODY>
+</DECLARATION>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<DECLARATION xsi:noNamespaceSchemaLocation="NBU00701.XSD" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<HEAD>
+		<FNAME>P70RXX12.301</FNAME>
+		<EDRPOU>12345678</EDRPOU>
+		<IDBANK>RXX</IDBANK>
+		<MFO>123456</MFO>
+		<CDTASK>002</CDTASK>
+		<CDSUB>00001</CDSUB>
+		<CDFORM>NBU_01SV</CDFORM>
+		<FILL_DATE>09.12.2013</FILL_DATE>
+		<FILL_TIME>0900</FILL_TIME>
+		<EI xsi:nil="true"/>
+		<KU>24</KU>
+	</HEAD>
+	<INF_DT>01.12.2013</INF_DT>
+	<TABLE_PIC>UjBsR09EbGhjZ0dTQUxNQUFBUUNBRU1tQ1p0dU1GUXhEUzhi</TABLE_PIC>
+	<PICTURE>UjBsR09EbGhjZ0dTQUxNQUFBUUNBRU1tQ1p0dU1GUXhEUzhi</PICTURE>
+	<OWNER ROWNUM="1">
+		<OWNER_TYPE>1</OWNER_TYPE>
+		<OWNER_NAZVA>
+			<NT_COD>0</NT_COD>
+			<NT_NM1>ПОВНЕ НАЙМЕНУВАННЯ ЮР.ОСОБИ</NT_NM1>
+			<NT_NM2>СКОРОЧЕНЕ НАЙМЕНУВАННЯ ЮР.ОСОБИ</NT_NM2>
+			<NT_NM3 xsi:nil="true"/>
+		</OWNER_NAZVA>
+		<OWNER_OZN>20</OWNER_OZN>
+		<OWNER_POS xsi:nil="true"/>
+		<OWNER_ADR>
+			<ADR_СOD_KR>100</ADR_СOD_KR>
+			<ADR_INDEX>11111</ADR_INDEX>
+			<ADR_PUNKT>МІСТО ПОЛТАВА</ADR_PUNKT>
+			<ADR_UL>ВУЛИЦЯ ЦЕНТРАЛЬНА</ADR_UL>
+			<ADR_BUD>14</ADR_BUD>
+			<ADR_KORP>А</ADR_KORP>
+			<ADR_OFF xsi:nil="true"/>
+		</OWNER_ADR>
+		<OWNER_PASS xsi:nil="true"/>
+		<OWNER_DATE xsi:nil="true"/>
+		<OWNER_DORG xsi:nil="true"/>
+		<PR_UCH>
+			<UT_VIDSOTOK>23.12</UT_VIDSOTOK>
+			<UT_NOMINAL>1234567891267</UT_NOMINAL>
+			<UT_GOLOSI>1234</UT_GOLOSI>
+		</PR_UCH>
+		<OPR_UCH>
+			<UT_VIDSOTOK>12.12</UT_VIDSOTOK>
+			<UT_NOMINAL>1234567</UT_NOMINAL>
+			<UT_GOLOSI>891</UT_GOLOSI>
+		</OPR_UCH>
+		<GOL_UCH>
+			<GT_VIDSOTOK>3.00</GT_VIDSOTOK>
+			<GT_GOLOS>123</GT_GOLOS>
+		</GOL_UCH>
+		<ZAG_UCH>
+			<GT_VIDSOTOK>37.24</GT_VIDSOTOK>
+			<GT_GOLOS>2248</GT_GOLOS>
+		</ZAG_UCH>
+	</OWNER>
+	<OWNER ROWNUM="2">
+		<OWNER_TYPE>2</OWNER_TYPE>
+		<OWNER_NAZVA>
+			<NT_COD>2200000000</NT_COD>
+			<NT_NM1>СИДОРЕНКО</NT_NM1>
+			<NT_NM2>СИДОР</NT_NM2>
+			<NT_NM3>СИДОРОВИЧ</NT_NM3>
+		</OWNER_NAZVA>
+		<OWNER_OZN>21</OWNER_OZN>
+		<OWNER_POS>ДИРЕКТОР</OWNER_POS>
+		<OWNER_ADR>
+			<ADR_СOD_KR>100</ADR_СOD_KR>
+			<ADR_INDEX>99999</ADR_INDEX>
+			<ADR_PUNKT>МІСТО ЛЬВІВ</ADR_PUNKT>
+			<ADR_UL>ВУЛИЦЯ ЗАТИШНА</ADR_UL>
+			<ADR_BUD>15</ADR_BUD>
+			<ADR_KORP xsi:nil="true"/>
+			<ADR_OFF>12</ADR_OFF>
+		</OWNER_ADR>
+		<OWNER_PASS>
+			<PS_SR>СН</PS_SR>
+			<PS_NM>654321</PS_NM>
+			<PS_DT>19.02.2004</PS_DT>
+			<PS_ORG>Повне найменування органу, який видав документ</PS_ORG>
+		</OWNER_PASS>
+		<OWNER_DATE>05.10.1988</OWNER_DATE>
+		<OWNER_DORG xsi:nil="true"/>
+		<PR_UCH>
+			<UT_VIDSOTOK>3.12</UT_VIDSOTOK>
+			<UT_NOMINAL>4567</UT_NOMINAL>
+			<UT_GOLOSI>4</UT_GOLOSI>
+		</PR_UCH>
+		<OPR_UCH>
+			<UT_VIDSOTOK>1.00</UT_VIDSOTOK>
+			<UT_NOMINAL>12</UT_NOMINAL>
+			<UT_GOLOSI>1</UT_GOLOSI>
+		</OPR_UCH>
+		<GOL_UCH>
+			<GT_VIDSOTOK>58.64</GT_VIDSOTOK>
+			<GT_GOLOS>58</GT_GOLOS>
+		</GOL_UCH>
+		<ZAG_UCH>
+			<GT_VIDSOTOK>62.76</GT_VIDSOTOK>
+			<GT_GOLOS>62</GT_GOLOS>
+		</ZAG_UCH>
+	</OWNER>
+	<PERE_GOLOS ROWNUM="1">
+		<TO_GL_OSOBA>
+			<NT_COD>1111000000</NT_COD>
+			<NT_NM1>ОСОБА, ЯКІЙ ПЕРЕДАЛИ ПРАВО ГОЛОСУ</NT_NM1>
+			<NT_NM2>ЮР.ОСОСБА</NT_NM2>
+			<NT_NM3 xsi:nil="true"/>
+		</TO_GL_OSOBA>
+		<FROM_GL_OSOBA>
+			<NT_COD>0</NT_COD>
+			<NT_NM1>ОСОБА, ЯКА ПЕРЕДАЛА ПРАВО ГОЛОСУ - ПЕТРОВ</NT_NM1>
+			<NT_NM2>ПЕТРО</NT_NM2>
+			<NT_NM3>ПЕТРОВИЧ</NT_NM3>
+		</FROM_GL_OSOBA>
+		<GL_NABUT>
+			<GT_VIDSOTOK>28.00</GT_VIDSOTOK>
+			<GT_GOLOS>234</GT_GOLOS>
+		</GL_NABUT>
+		<GL_NOMER>ДР-102</GL_NOMER>
+		<GL_DT>17.04.2009</GL_DT>
+		<GL_PRICH>Причина передавання голосу</GL_PRICH>
+	</PERE_GOLOS>
+	<PERE_GOLOS ROWNUM="2">
+		<TO_GL_OSOBA>
+			<NT_COD>10000000</NT_COD>
+			<NT_NM1>ІВАНОВ</NT_NM1>
+			<NT_NM2>ІВАН</NT_NM2>
+			<NT_NM3>ІВАНОВИЧ</NT_NM3>
+		</TO_GL_OSOBA>
+		<FROM_GL_OSOBA>
+			<NT_COD>90000000</NT_COD>
+			<NT_NM1>ОСОБА, ЯКА ПЕРЕДАЛА ПРАВО ГОЛОСУ - ВЛАСЕНКО</NT_NM1>
+			<NT_NM2>ВАСИЛІЙ</NT_NM2>
+			<NT_NM3>ВАСИЛЬОВИЧ</NT_NM3>
+		</FROM_GL_OSOBA>
+		<GL_NABUT>
+			<GT_VIDSOTOK>31.00</GT_VIDSOTOK>
+			<GT_GOLOS>45671</GT_GOLOS>
+		</GL_NABUT>
+		<GL_NOMER>ДР-345</GL_NOMER>
+		<GL_DT>10.02.2008</GL_DT>
+		<GL_PRICH>Причина передавання голосу</GL_PRICH>
+	</PERE_GOLOS>
+	<SUM_BANK>
+		<GT_VIDSOTOK>111.11</GT_VIDSOTOK>
+		<GT_GOLOS>1000000000</GT_GOLOS>
+	</SUM_BANK>
+	<MAN_BANK>
+		<MB_NAZVA>
+			<FIO_NM1>КОНДРАТЕНКО</FIO_NM1>
+			<FIO_NM2>ПРОХОР</FIO_NM2>
+			<FIO_NM3>ІВАНОВИЧ</FIO_NM3>
+		</MB_NAZVA>
+		<MB_POS>ЗАСТУПНИК ГОЛОВИ</MB_POS>
+		<MB_DT>01.08.2008</MB_DT>
+		<MB_ISP_NAZVA>
+			<FIO_NM1>АНТОНЯН</FIO_NM1>
+			<FIO_NM2>ВАСИЛІЙ</FIO_NM2>
+			<FIO_NM3>ПЕТРОВИЧ</FIO_NM3>
+		</MB_ISP_NAZVA>
+		<MB_TLF>+380442520000</MB_TLF>
+	</MAN_BANK>
+</DECLARATION>

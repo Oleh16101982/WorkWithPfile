@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:include schemaLocation="NBU_COMMON.xsd"/>
+	<!--===================================================================================================================================================================-->
+	<xs:element name="DECLARATION" type="DECLARATION_TYPE">
+		<xs:unique name="UNIQ_OWNER">
+			<xs:selector xpath="OWNER"/>
+			<xs:field xpath="@ROWNUM"/>
+		</xs:unique>
+		<xs:unique name="UNIQ_GOLOS">
+			<xs:selector xpath="PERE_GOLOS"/>
+			<xs:field xpath="@ROWNUM"/>
+		</xs:unique>
+	</xs:element>
+	<!--===================================================================================================================================================================-->
+	<xs:complexType name="DECLARATION_TYPE">
+		<xs:sequence>
+			<xs:element name="HEAD" type="DHEAD"/>
+			<!-- Актуальна дата, на яку подана інформація INF_DT-->
+			<xs:element name="INF_DT" type="DGDate"/>
+			<!-- Файл-таблиця (формат PDF). Інформація про власників істотної участі - Перелік (Положення - Глава 4).-->
+			<xs:element name="TABLE_PIC" type="xs:base64Binary"/>
+			<!-- Файл-схема (формат PDF). Інформація про власників істотної участі - Схематичне зображення (Положення - Глава 4).-->
+			<xs:element name="PICTURE" type="xs:base64Binary"/>
+			<!--1. Відомості про структуру власності банку. Структура OWNER. Якщо власників кілька, підструктура OWNER повторюється.-->
+			<xs:element name="OWNER" type="DECLARBODY_OWNER" maxOccurs="999999"/>
+			<!--======================================================================================================-->
+			<!--2. Інформація про набуття права голосу. Структура PERE_GOLOS . Якщо записів про набуття права голосу кілька, структура PERE_GOLOS повторюється.-->
+			<xs:element name="PERE_GOLOS" type="PERE_GOLOS_TYPE" maxOccurs="999999"/>
+			<!--======================================================================================================-->
+			<!--3. Відсотки статутного капіталу банку (сума) та кількість голосів (сума). Структура SUM_BANK.-->
+			<xs:element name="SUM_BANK" type="GOLOS_TYPE"/>
+			<!--======================================================================================================-->
+			<!--4. Інформація про керівника банку, що підписав анкету та виконавця. Структура MAN_BANK.-->
+			<xs:element name="MAN_BANK" type="MAN_BANK_TYPE" nillable="false"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--===================================================================================================================================================================-->
+	<xs:complexType name="DECLARBODY_OWNER">
+		<xs:sequence>
+			<!-- Структура OWNER. -->
+			<!--1.1	Тип учасника - набуває значень: 1-ЮрОсоба, 2-ФізОсоба-->
+			<xs:element name="OWNER_TYPE">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:enumeration value="1"/>
+						<xs:enumeration value="2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<!--1.2 Код та повне найменування юр.особи або ПІБ фіз.особи -->
+			<xs:element name="OWNER_NAZVA" type="NAZVA_TYPE"/>
+			<!--1.3 Ознака особи. Набуває значень:
+                  20 – власник істотної участі в банку;
+                  21 – асоційована особа власника істотної участі в банку;
+                  50 – особа співвласник;
+                  51 - асоційована особа співвласника;
+                  60 – особа, через яку здійснюється опосередковане володіння участю в банку;
+                  61 - асоційована особа особи, через яку здійснюється опосередковане володіння участю в банку;
+                 -->
+			<xs:element name="OWNER_OZN">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:enumeration value="20"/>
+						<xs:enumeration value="21"/>
+						<xs:enumeration value="50"/>
+						<xs:enumeration value="51"/>
+						<xs:enumeration value="60"/>
+						<xs:enumeration value="61"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<!--1.4 Посада фіз.особи -->
+			<xs:element name="OWNER_POS" type="xs:string" nillable="true"/>
+			<!--1.5.Місцезнаходження юр.особи або місце проживання фіз.особи (підструктура OWNER_ADR структури OWNER) -->
+			<xs:element name="OWNER_ADR" type="ADR_TYPE"/>
+			<!--1.6 Відомості про документ, що посвідчує фізичну особу (паспорт) (підструктура OWNER_PASS структури OWNER) -->
+			<xs:element name="OWNER_PASS" type="PASS_TYPE" nillable="true"/>
+			<!--1.7 Дата народження. Зазначається для фізичної особи -->
+			<xs:element name="OWNER_DATE" type="DGDate" nillable="true"/>
+			<!--1.8.Державний орган, який здійснив реєстрацію (для іноземних юридичних осіб) -->
+			<xs:element name="OWNER_DORG" type="xs:string" nillable="true"/>
+			<!--1.9 Пряма участь (підструктура PR_UCH структури OWNER)-->
+			<xs:element name="PR_UCH" type="UCHAST_TYPE" nillable="true"/>
+			<!--1.10.Опосередкована участь (підструктура OPR_UCH структури OWNER)-->
+			<xs:element name="OPR_UCH" type="UCHAST_TYPE" nillable="true"/>
+			<!--1.11. Набуте право голосу (підструктура GOL_UCH структури OWNER)-->
+			<xs:element name="GOL_UCH" type="GOLOS_TYPE" nillable="true"/>
+			<!--1.12. Загальний відсоток у статутному капіталі та загальна кількість голосів (підструктура ZAG_UCH структури OWNER)-->
+			<xs:element name="ZAG_UCH" type="GOLOS_TYPE"/>
+		</xs:sequence>
+		<xs:attribute name="ROWNUM" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:minInclusive value="1"/>
+					<xs:maxInclusive value="999999"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:simpleType name="ID_OSOBU">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="10"/>
+			<xs:pattern value="([0-9]{1,10})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LNAME">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="254"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NAME">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="50"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OTCHESTVO">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="50"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="COD_STR">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\d{3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="COD_INDEX">
+		<xs:restriction base="xs:integer">
+			<xs:maxInclusive value="99999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PUNKT_NM">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="50"/>
+			<xs:minLength value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UL_NM">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="50"/>
+			<xs:minLength value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BUD_NOM">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="10"/>
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="KORP_OFF_NOM">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="KOD_OBL">
+		<xs:restriction base="xs:decimal">
+			<xs:pattern value="\d{2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DOC_SERIYA">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[АБВГДЕЄЖЗИ_КЛМНОПРСТУФХЦЧШЩЮЯ]{2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DOC_NOMER">
+		<xs:restriction base="xs:decimal">
+			<xs:pattern value="\d{6}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--(тип NAZVA_TYPE) - Відомості про документ, що посвідчує фізичну особу.-->
+	<xs:complexType name="NAZVA_TYPE">
+		<xs:sequence>
+			<!-- Зазначається  код  за  ЄДРПОУ  (для   іноземних юридичних осіб зазначається ідентифікаційний код із легалізованого 
+                  витягу з  торговельного,  банківського  чи  судового  реєстру  або реєстраційного   посвідчення   місцевого  органу  влади
+                  іноземної держави про реєстрацію юридичної особи)  або  реєстраційний  номер облікової картки.
+                  Якщо немає коду, то ставиться цифра нуль.
+            -->
+			<xs:element name="NT_COD" type="ID_OSOBU"/>
+			<!--Прізвище/найменування. Для юридичної особи зазначається повне найменування; для фізичної особи зазначається прізвище-->
+			<xs:element name="NT_NM1" type="LNAME"/>
+			<!--Ім’я/скорочене найменування. Для юридичної особи зазначається скорочене найменування; для фізичної особи зазначається ім’я-->
+			<xs:element name="NT_NM2" type="NAME"/>
+			<!--По батькові. Зазначається для фізичної особи (за наявності)-->
+			<xs:element name="NT_NM3" type="OTCHESTVO" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--(тип PASS_TYPE) - Відомості про документ, що посвідчує фізичну особу.-->
+	<xs:complexType name="PASS_TYPE">
+		<xs:sequence>
+			<!--Серія паспорта. Під час заповнення використовуються великі літери.-->
+			<xs:element name="PS_SR" type="DOC_SERIYA"/>
+			<!--Номер паспорта.-->
+			<xs:element name="PS_NM" type="DOC_NOMER"/>
+			<!--Дата видачі паспорта.-->
+			<xs:element name="PS_DT" type="DGDate"/>
+			<!--Повне найменування органу, який видав паспорт.-->
+			<xs:element name="PS_ORG" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--(тип ADR_TYPE).Місцезнаходження або місце проживання.-->
+	<xs:complexType name="ADR_TYPE">
+		<xs:sequence>
+			<!--Код країни реєстрації або громадянства. Зазначається цифровий код країни згідно з Класифікацією країн світу -->
+			<xs:element name="ADR_COD_KR" type="COD_STR"/>
+			<!--Поштовий індекс-->
+			<xs:element name="ADR_INDEX" type="COD_INDEX"/>
+			<!--Назва населеного пункту-->
+			<xs:element name="ADR_PUNKT" type="PUNKT_NM"/>
+			<!--Назва вулиці-->
+			<xs:element name="ADR_UL" type="UL_NM"/>
+			<!--Будинок (номер)-->
+			<xs:element name="ADR_BUD" type="BUD_NOM"/>
+			<!--Корпус (споруда)-->
+			<xs:element name="ADR_KORP" type="KORP_OFF_NOM" nillable="true" minOccurs="0"/>
+			<!--Офіс або квартира (номер)-->
+			<xs:element name="ADR_OFF" type="KORP_OFF_NOM" nillable="true" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--(тип UCHAST_TYPE) Пряма участь.-->
+	<xs:complexType name="UCHAST_TYPE">
+		<xs:sequence>
+			<!--Відсотки у статутному капіталі банку-->
+			<xs:element name="UT_VIDSOTOK">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:totalDigits value="5"/>
+						<xs:fractionDigits value="2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<!--Номінал у статутному капіталі банку-->
+			<xs:element name="UT_NOMINAL">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:totalDigits value="16"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<!--Кількість голосів-->
+			<xs:element name="UT_GOLOSI">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:totalDigits value="10"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="GOLOS_TYPE">
+		<xs:sequence>
+			<!--Відсотки у статутному капіталі банку-->
+			<xs:element name="GT_VIDSOTOK">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:totalDigits value="5"/>
+						<xs:fractionDigits value="2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<!--Кількість голосів-->
+			<xs:element name="GT_GOLOS">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:totalDigits value="12"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!--(тип PERE_GOLOS_TYPE) - Інформація про набуття права голосу.-->
+	<xs:complexType name="PERE_GOLOS_TYPE">
+		<xs:sequence>
+			<xs:element name="TO_GL_OSOBA" type="NAZVA_TYPE"/>
+			<xs:element name="FROM_GL_OSOBA" type="NAZVA_TYPE"/>
+			<xs:element name="GL_NABUT" type="GOLOS_TYPE"/>
+			<!--Номер договору, на підставі якого передається голос-->
+			<xs:element name="GL_NOMER" type="xs:string"/>
+			<!--Дата договору, на підставі якого передається голос-->
+			<xs:element name="GL_DT" type="DGDate"/>
+			<!--Причина передавання голосу-->
+			<xs:element name="GL_PRICH" type="xs:string"/>
+		</xs:sequence>
+		<xs:attribute name="ROWNUM" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:int">
+					<xs:minInclusive value="1"/>
+					<xs:maxInclusive value="999999"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<!--(тип FIO_TYPE) - ПІБ фізичної особи.-->
+	<xs:complexType name="FIO_TYPE">
+		<xs:sequence>
+			<!--для фізичної особи зазначається прізвище-->
+			<xs:element name="FIO_NM1" type="LNAME"/>
+			<!--для фізичної особи зазначається ім’я-->
+			<xs:element name="FIO_NM2" type="NAME"/>
+			<!-- По батькові. Зазначається для фізичної особи (за наявності)-->
+			<xs:element name="FIO_NM3" type="OTCHESTVO" nillable="true"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--(тип MAN_BANK_TYPE) - Інформація про керівника банку, що підписав анкету та виконавця.-->
+	<xs:complexType name="MAN_BANK_TYPE">
+		<xs:sequence>
+			<xs:element name="MB_NAZVA" type="FIO_TYPE"/>
+			<!--Посада керівника, що підписав анкету -->
+			<xs:element name="MB_POS" type="xs:string" nillable="true"/>
+			<!--Дата підпису -->
+			<xs:element name="MB_DT" type="DGDate"/>
+			<!--Прізвище виконавця-->
+			<xs:element name="MB_ISP_NAZVA" type="FIO_TYPE"/>
+			<!--Номер контактного телефону-->
+			<xs:element name="MB_TLF" minOccurs="1" maxOccurs="1">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="50"/>
+						<xs:minLength value="3"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

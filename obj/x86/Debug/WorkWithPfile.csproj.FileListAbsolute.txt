@@ -1,0 +1,14 @@
+D:\Project\__VS2010\20131115_P7File\WorkWithPfile\WorkWithPfile\bin\Debug\WorkWithPfile.exe
+D:\Project\__VS2010\20131115_P7File\WorkWithPfile\WorkWithPfile\bin\Debug\WorkWithPfile.pdb
+D:\Project\__VS2010\20131115_P7File\WorkWithPfile\WorkWithPfile\obj\x86\Debug\WorkWithPfile.Form1.resources
+D:\Project\__VS2010\20131115_P7File\WorkWithPfile\WorkWithPfile\obj\x86\Debug\WorkWithPfile.Properties.Resources.resources
+D:\Project\__VS2010\20131115_P7File\WorkWithPfile\WorkWithPfile\obj\x86\Debug\WorkWithPfile.exe
+D:\Project\__VS2010\20131115_P7File\WorkWithPfile\WorkWithPfile\obj\x86\Debug\WorkWithPfile.pdb
+D:\Project\__VS2010\20131115_P7File\WorkWithPfile\WorkWithPfile\obj\x86\Debug\WorkWithPfile.frmV_DECLARATION_HEAD.resources
+D:\Project\__VS2010\20131115_P7File\WorkWithPfile\WorkWithPfile\obj\x86\Debug\WorkWithPfile.frmV_Struct_SUM_BANK.resources
+D:\Project\__VS2010\20131115_P7File\WorkWithPfile\WorkWithPfile\obj\x86\Debug\WorkWithPfile.frmV_Struct_OWNER.resources
+D:\Project\__VS2010\20131115_P7File\WorkWithPfile\WorkWithPfile\obj\x86\Debug\WorkWithPfile.frmV_Struct_MAN_BANK.resources
+D:\Project\__VS2010\20131115_P7File\WorkWithPfile\WorkWithPfile\bin\Debug\WorkWithPfile.exe.config
+D:\Project\__VS2010\20131115_P7File\WorkWithPfile\WorkWithPfile\obj\x86\Debug\WorkWithPfile.frmV_Struct_PERE_GOLOS.resources
+D:\Project\__VS2010\20131115_P7File\WorkWithPfile\WorkWithPfile\obj\x86\Debug\WorkWithPfile.csproj.GenerateResource.Cache
+D:\Project\__VS2010\20131115_P7File\WorkWithPfile\WorkWithPfile\obj\x86\Debug\WorkWithPfile.csprojResolveAssemblyReference.cache
